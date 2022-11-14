@@ -1,10 +1,9 @@
 import Fastify from 'fastify'
 import cors from '@fastify/cors'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient ({
-  log: ['query'],
-})
+import { createPools } from './routes/pools/create/function'
+import { countPools } from './routes/pools/count/function'
+import { countUsers } from './routes/users/count/function'
+import { countGuess } from './routes/guesses/count/function'
 
 const start = async () => {
   const fastify = Fastify({
@@ -15,12 +14,13 @@ const start = async () => {
     origin: true
   })
 
-  fastify.get('/pools/count', async () => {
-    
-    const count = await prisma.pool.count()
+  fastify.get('/pools/count', countPools)
 
-    return {count}
-  })
+  fastify.get('/users/count', countUsers)
+
+  fastify.get('/guess/count', countGuess)
+  
+  fastify.post('/pools', await createPools)
 
   await fastify.listen({ port: 3333, /*host: '0.0.0.0'*/ })
 }
