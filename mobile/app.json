@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "bolao-sucesso",
+    "slug": "bolao-sucesso",
+    "schema": "bolao-sucesso",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
