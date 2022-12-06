@@ -1,11 +1,12 @@
 import { ReactNode } from 'react'
-import { IUserProps } from './Users.interface'
+import { UserProps } from './Users.interface'
 
-export interface IAuthContextProps {
-  user: IUserProps
+export interface AuthContextProps {
+  user: UserProps
+  isUserLoading: boolean
   signIn: () => Promise<void> 
 }
 
-export interface IAuthContextProviderProps {
+export interface AuthContextProviderProps {
   children: ReactNode
 }
